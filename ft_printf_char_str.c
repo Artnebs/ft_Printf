@@ -6,7 +6,7 @@
 /*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 13:32:23 by anebbou           #+#    #+#             */
-/*   Updated: 2024/11/18 10:57:51 by anebbou          ###   ########.fr       */
+/*   Updated: 2024/11/18 14:02:44 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_printf_char(char c)
 
 int	ft_printf_str(char *str)
 {
-	int len;
+	int	len;
 
 	if (!str)
 		str = "(null)";

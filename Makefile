@@ -10,10 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Nom de la bibliothèque
 NAME = libftprintf.a
 
-# Répertoire de la libft
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
@@ -36,8 +34,8 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
 # Compile la bibliothèque ft_printf
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
+	ar rcs $(NAME) $(OBJS) $(LIBFT_DIR)/*.o
 
 # Règle générique pour compiler les fichiers objets
 %.o: %.c

@@ -6,13 +6,13 @@
 /*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:25:49 by anebbou           #+#    #+#             */
-/*   Updated: 2024/11/18 11:41:32 by anebbou          ###   ########.fr       */
+/*   Updated: 2024/11/18 14:16:29 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf_numbers(char specifier, va_list args)
+int	ft_printf_numbers(char specifier, va_list args)
 {
 	if (specifier == 'd' || specifier == 'i')
 		return (ft_printf_int(va_arg(args, int)));
@@ -25,10 +25,10 @@ int ft_printf_numbers(char specifier, va_list args)
 	return (0);
 }
 
-int ft_printf_int(int n)
+int	ft_printf_int(int n)
 {
-	char *str;
-	int len;
+	char	*str;
+	int		len;
 
 	str = ft_itoa(n);
 	len = ft_strlen(str);
@@ -37,10 +37,10 @@ int ft_printf_int(int n)
 	return (len);
 }
 
-int ft_printf_uint(unsigned int n)
+int	ft_printf_uint(unsigned int n)
 {
-	char *str;
-	int len;
+	char	*str;
+	int		len;
 
 	str = ft_ltoa_base((unsigned long)n, 10);
 	len = ft_strlen(str);
@@ -49,10 +49,10 @@ int ft_printf_uint(unsigned int n)
 	return (len);
 }
 
-int ft_printf_hex(unsigned int n, int is_upper)
+int	ft_printf_hex(unsigned int n, int is_upper)
 {
-	char *str;
-	int len;
+	char	*str;
+	int		len;
 
 	str = ft_ltoa_base_upper((unsigned long)n, 16, is_upper);
 	len = ft_strlen(str);
@@ -61,17 +61,25 @@ int ft_printf_hex(unsigned int n, int is_upper)
 	return (len);
 }
 
-int ft_printf_ptr(void *ptr)
+int	ft_printf_ptr(void *ptr)
 {
-	unsigned long address;
-	char *str;
-	int len;
+	char	*str;
+	int		len;
 
-	address = (unsigned long)ptr;
-	ft_putstr_fd("0x", 1);
-	str = ft_ltoa_base_upper(address, 16, 0);
-	len = ft_strlen(str);
-	ft_putstr_fd(str, 1);
-	free(str);
-	return (len + 2);
+	len = 0;
+	if (ptr == NULL)
+	{
+		len = write(1, "(nil)", 5);
+	}
+	else
+	{
+		str = ft_ltoa_base_upper((unsigned long)ptr, 16, 0);
+		if (str == NULL)
+			return (-1);
+		len += write(1, "0x", 2);
+		ft_putstr_fd(str, 1);
+		len += ft_strlen(str);
+		free(str);
+	}
+	return (len);
 }
