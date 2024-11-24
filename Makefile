@@ -45,7 +45,7 @@ $(NAME): $(OBJS) $(LIBFT)
 # Gestion d'un fichier de test (désactivée)
 # **************************************************************************** #
 
-# Si pour tester avec un fichier main.c, décommentez règles :
+# Pour tester avec un fichier main.c:
 
 # TEST = test_program
 # 
@@ -62,11 +62,11 @@ $(NAME): $(OBJS) $(LIBFT)
 clean:
 	rm -f $(OBJS)
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	# rm -f main.o # Décommentez si main.c est utilisé
+	# rm -f main.o # Décommentez si main.c utilisé
 
 fclean: clean
 	rm -f $(NAME)
-	# rm -f $(TEST) # Décommentez si main.c est utilisé
+	# rm -f $(TEST) # Décommentez si main.c utilisé
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:25:49 by anebbou           #+#    #+#             */
-/*   Updated: 2024/11/18 14:04:25 by anebbou          ###   ########.fr       */
+/*   Updated: 2024/11/20 17:59:04 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	int		count;
 
+	if (!format)
+		return (-1);
 	count = 0;
 	va_start(args, format);
 	while (*format)
